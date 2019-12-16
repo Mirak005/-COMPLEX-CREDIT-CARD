@@ -36,9 +36,11 @@ class Card extends React.Component {
   // valid thru
   validation = e => {
     console.log(e.target.value);
-    e.target.value =
+    e.target.value = e.target.value.slice(0,2)>12?
+    ""
+    :
       e.target.value.length >= 3?
-       `${e.target.value.replace(/[^0-9]/g, "").slice(0, 2)}/${e.target.value.replace(/[^0-9]/g, "").slice(2, 4)}`
+       e.target.value.replace(/[^0-9]/g, "").slice(0, 2) + '/'+ e.target.value.replace(/[^0-9]/g, "").slice(2, 4)
         : e.target.value.replace(/[^0-9]/g, "");
 
     this.setState({
